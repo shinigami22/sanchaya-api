@@ -11,6 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150312062454) do
+
+  create_table "poems", force: :cascade do |t|
+    t.integer  "poet_id",    limit: 4
+    t.string   "name",       limit: 45
+    t.text     "poem",       limit: 4294967295
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "poems", ["id"], name: "index_poems_on_id", using: :btree
+  add_index "poems", ["poet_id"], name: "index_poems_on_poet_id", using: :btree
+
+  create_table "poet_informations", force: :cascade do |t|
+    t.integer  "poet_id",      limit: 4
+    t.string   "pen_name",     limit: 45
+    t.string   "place",        limit: 45
+    t.string   "spouse",       limit: 45
+    t.string   "father",       limit: 45
+    t.string   "mother",       limit: 45
+    t.date     "birth"
+    t.text     "informations", limit: 4294967295
+    t.text     "about",        limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "poet_informations", ["id"], name: "index_poet_informations_on_id", using: :btree
+  add_index "poet_informations", ["poet_id"], name: "index_poet_informations_on_poet_id", using: :btree
+
+  create_table "poets", force: :cascade do |t|
+    t.string   "pen_name",   limit: 45
+    t.string   "name",       limit: 45
+    t.string   "sex",        limit: 45
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "poets", ["id"], name: "index_poets_on_id", using: :btree
 
 end
