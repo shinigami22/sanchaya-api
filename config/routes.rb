@@ -10,6 +10,8 @@
         get "/poet_info/:id" => "homes#poet_info"
         get "/find_poem/:id" => "homes#find_poem"
         get "/search_poet/:search" => "homes#search_poet"
+        get "/search_poem/:search" => "homes#search_poem"
+        get "/search_info/:search" => "homes#search_info"
       end
     end
 
