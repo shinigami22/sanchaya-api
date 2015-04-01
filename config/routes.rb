@@ -14,5 +14,5 @@
         get "/search_info/:search" => "homes#search_info"
       end
     end
-
+    match "*path", to: "errors#catch_404", via: :all
   end
