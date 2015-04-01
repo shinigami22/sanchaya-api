@@ -1,0 +1,1 @@
+This API URL returns a random Vachana on call
