@@ -1,4 +1,5 @@
 class Poet < ActiveRecord::Base
-	scope :search, lambda {|query|
-    where([" name LIKE ? OR pen_name LIKE ?", "%#{query}%","%#{query}%"])}
+ searchable do
+ 	text :name, :pen_name
+ end
 end

@@ -49,47 +49,26 @@ class Api::V1::HomesController < ApplicationController
   end
   # Return list of Poets matching a specific request
   def search_poet
-    if params[:search]
-      @poet_found=Poet.search(params[:search])
-    else
-      @poet_found=Poet.all
+    @query = Poet.search do
+      fulltext params[:search]
     end
-    respond_to do | format |
-      format.json{
-        render :json => {
-          :entries => @poet_found
-        }
-      }
-    end
+    @products = @query.results
+    render :json => @products
   end
   # Return list of Poems matching a specific request
   def search_poem
-    if params[:search]
-      @poem_found=Poem.search(params[:search])
-    else
-      @poem_found=Poem.all
+    @query = Poem.search do
+      fulltext params[:search]
     end
-    respond_to do | format |
-      format.json{
-        render :json => {
-          :entries => @poem_found
-        }
-      }
-    end
+    @products = @query.results
+    render :json => @products
   end
   # Return list of Poet details matching a specific request
   def search_info
-    if params[:search]
-      @info_found=PoetInformation.search(params[:search])
-    else
-      @info_found=PoetInformation.all
+    @query = PoetInformation.search do
+      fulltext params[:search]
     end
-    respond_to do | format |
-      format.json{
-        render :json => {
-          :entries => @info_found
-        }
-      }
-    end
+    @products = @query.results
+    render :json => @products
   end
 end
