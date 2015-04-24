@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.0'
-
+# Devise for Authentication
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
