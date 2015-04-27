@@ -1,4 +1,3 @@
-require 'rspec/autorun'
 require 'rails_helper'
 
 RSpec.describe Poem, type: :model do
