@@ -15,7 +15,7 @@
         get "/search_poem/:search" => "homes#search_poem"
         get "/search_info/:search" => "homes#search_info"
         get "/test_search/:search" => "homes#test_search"
-        resources :users, :only => [:show, :create, :update]
+        resources :users, :only => [:show, :create, :update, :destroy]
       end
     end
     
