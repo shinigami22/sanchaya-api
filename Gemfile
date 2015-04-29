@@ -4,7 +4,12 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 # Devise for Authentication
 gem 'devise'
-
+#sabisu postman-like engine
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails'
+gem 'furatto', '1.3.7'
+gem 'font-awesome-rails'
+gem 'simple_form' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record

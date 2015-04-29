@@ -1,6 +1,7 @@
   require 'api_constraints'
 
   Rails.application.routes.draw do
+  mount SabisuRails::Engine => "/sabisu_rails"
   devise_for :users
     # Api default repond to JSON 
     namespace :api, defaults: {format: 'json'} ,
@@ -16,6 +17,7 @@
         get "/search_info/:search" => "homes#search_info"
         get "/test_search/:search" => "homes#test_search"
         resources :users, :only => [:show, :create, :update, :destroy]
+        resources :sessions, :only => [:create, :destroy]
       end
     end
     

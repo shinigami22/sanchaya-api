@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 #require 'rspec/autorun'
 require 'factory_girl'
+require 'rspec/core'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -51,6 +52,10 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   RSpec.configure do |config|
+   
     config.include FactoryGirl::Syntax::Methods
+    config.include Devise::TestHelpers, :type => :controller
   end
+
+
 end
