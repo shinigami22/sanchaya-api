@@ -14,7 +14,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
     context "when the credentials are correct" do
 
       before(:each) do
-        credentials = { email: @user.email, password: "123456789" }
+        credentials = { email: @user.email, password: "12345678" }
         post :create, { session: credentials }
       end
 
