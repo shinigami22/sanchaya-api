@@ -41,7 +41,7 @@ RSpec.configure do |config|
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
-   config.infer_base_class_for_anonymous_controllers = false
+  config.infer_base_class_for_anonymous_controllers = false
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
@@ -49,16 +49,20 @@ RSpec.configure do |config|
   #       # ...
   #     end
   #
-   config.order = "random"
+  config.order = "random"
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include Request::JsonHelpers, :type => :controller
   config.include Request::HeadersHelpers, :type => :controller
+  config.before(:each, type: :controller) do
+    include_default_accept_headers
+  end
   config.include Devise::TestHelpers, :type => :controller
+  config.include FactoryGirl::Syntax::Methods
   RSpec.configure do |config|
-   
-    config.include FactoryGirl::Syntax::Methods
+
+
     #config.include Devise::TestHelpers, :type => :controller
   end
 
