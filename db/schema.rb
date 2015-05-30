@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515075209) do
+ActiveRecord::Schema.define(version: 20150522235942) do
 
   create_table "poems", force: :cascade do |t|
     t.integer  "poet_id",    limit: 4
@@ -69,5 +69,16 @@ ActiveRecord::Schema.define(version: 20150515075209) do
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vachana_sahityas", force: :cascade do |t|
+    t.text     "vachana",      limit: 4294967295
+    t.string   "vachanakaara", limit: 255
+    t.string   "pen_name",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",      limit: 4
+  end
+
+  add_index "vachana_sahityas", ["user_id"], name: "index_vachana_sahityas_on_user_id", using: :btree
 
 end

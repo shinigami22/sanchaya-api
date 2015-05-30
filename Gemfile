@@ -14,6 +14,10 @@ gem 'simple_form'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
+#will_paginate
+#gem 'will_paginate'
+#kaminari
+gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -68,5 +72,7 @@ group :development, :test do
   
   gem "factory_girl_rails", "~> 4.0"
   gem 'ffaker'
+  gem 'railroady'
+  gem 'rails-erd'
   
 end

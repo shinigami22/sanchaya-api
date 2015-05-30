@@ -20,24 +20,7 @@ class Api::V1::HomesController < ApplicationController
       render json: {message: 'Resource is not available'}, status: :not_found
     end
   end
-  # Returns all the poets/vachanakaara's
-  def list_vachanakaara
-    begin
-      @vachanakaara=Poet.all
-      render :json => @vachanakaara
-    rescue ActiveRecord::RecordNotFound => e
-      render json: {message: 'Resource is not available'}, status: :not_found
-    end
-  end
-  # Returns details of the poet when associated ID is defined
-  def poet_info
-    begin
-      @info=PoetInformation.find(params[:id]) if params[:id]
-      render :json => @info
-    rescue ActiveRecord::RecordNotFound => e
-      render json: {message: 'Resource is not available'}, status: :not_found
-    end
-  end
+
   # Returns all the poems/vachanas
   def list_poems
     begin
@@ -48,27 +31,5 @@ class Api::V1::HomesController < ApplicationController
     end
   end
   # Return list of Poets matching a specific request
-  def search_poet
-    @query = Poet.search do
-      fulltext params[:search]
-    end
-    @products = @query.results
-    render :json => @products
-  end
-  # Return list of Poems matching a specific request
-  def search_poem
-    @query = Poem.search do
-      fulltext params[:search]
-    end
-    @products = @query.results
-    render :json => @products
-  end
-  # Return list of Poet details matching a specific request
-  def search_info
-    @query = PoetInformation.search do
-      fulltext params[:search]
-    end
-    @products = @query.results
-    render :json => @products
-  end
+
 end

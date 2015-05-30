@@ -1,0 +1,46 @@
+  def index
+
+    if params[:search]
+      # Search
+      @vachana=VachanaSahitya.all
+      @vachana= @vachana.search do
+        fulltext params[:search]
+      end
+      @vachana = @vachana.results
+      respond_with :json => {
+        :current_page => @vachana.current_page,
+        :per_page => @vachana.per_page,
+        :total_entries => @vachana.total_entries,
+        :entries =>@vachana
+      }
+    else
+      @vachana=VachanaSahitya.paginate :page => params[:page]
+
+      respond_with :json => {
+        :current_page => @vachana.current_page,
+        :per_page => @vachana.per_page,
+        :total_entries => @vachana.total_entries,
+        :entries =>@vachana
+      }
+    end
+  end
+
+
+
+
+  _______________________________
+
+  import rake
+
+    desc "Import sahitayas"
+  task vachanasahityas: :environment do
+    counter=0
+    filename= File.join Rails.root, "sample_vachana.csv"
+    CSV.foreach(filename, headers: true) do |row|
+      vachana= VachanaSahitya.create(vachana: row["Vachana"], vachanakaara: row["Vachanakaara"], pen_name: row["Pen_Name"])
+      puts "#{Vachana} - #{vachana.errors.full_messages.join(",")}" if vachana.errors.any?
+      counter +=1 if vachana.persisted?
+    end
+    puts "Imported #{counter} vachanas"
+  end
+  

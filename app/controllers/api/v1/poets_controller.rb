@@ -1,6 +1,6 @@
 class Api::V1::PoetsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create]
-  respond_to :json
+  #before_action :authenticate_with_token!, only: [:create, :update, :destroy]
+  #respond_to :json
 
   def index
     respond_with Poet.all
@@ -10,7 +10,8 @@ class Api::V1::PoetsController < ApplicationController
   end
 
   def create
-    poet = current_user.poets.build(poet_params)
+    #poet = current_user.poets.build(poet_params)
+    poet = Poet.new(poet_params)
     if poet.save
       render json: poet, status: 201, location: [:api, poet]
     else
@@ -19,7 +20,7 @@ class Api::V1::PoetsController < ApplicationController
   end
 
   def update
-    poet = current_user.poets.find(params[:id])
+    poet = Poet.find(params[:id])
     if poet.update(poet_params)
       render json: poet, status: 200, location: [:api, poet]
     else

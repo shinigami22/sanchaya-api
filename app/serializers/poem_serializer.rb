@@ -1,3 +1,3 @@
 class PoemSerializer < ActiveModel::Serializer
-  attributes  :id, :name, :poem, :poet_id
+  attributes  :id, :poem
 end

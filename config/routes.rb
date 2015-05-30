@@ -11,18 +11,18 @@
         get "/list_poems" => "homes#list_poems"
         get "/poet_info/:id" => "homes#poet_info"
         get "/find_poem/:id" => "homes#find_poem"
-        get "/search_poet/:search" => "homes#search_poet"
-        get "/search_poem/:search" => "homes#search_poem"
-        get "/search_info/:search" => "homes#search_info"
-        get "/test_search/:search" => "homes#test_search"
+    
         resources :users, :only => [:show, :create, :update, :destroy] do
           resources :poets, :only => [:create, :update, :destroy]
         end
 
         resources :sessions, :only => [:create, :destroy]
         resources :poets, :only => [:show, :index]
-      end
+
+        resources :vachana_sahityas, :only => [:show, :index, :today_vachana]
+        resources :poems, :only =>[:show, :index]
     end
     
     match "*path", to: "errors#catch_404", via: :all
   end
+end
